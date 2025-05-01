@@ -118,11 +118,16 @@
       }, 1000);
     }
 
+
     function increaseScore() {
-      score++;
-      scoreDisplay.textContent = `Score: ${score}`;
-      moveBox();
-    }
+  score++;  // Increment the score
+  scoreDisplay.textContent = `Score: ${score}`;  // Update score display
+  moveBox();  // Move the box to a new random position
+}
+
+// Add event listeners for both mouse clicks and touch events on the box
+box.onclick = increaseScore;  // Mouse click event
+box.ontouchstart = increaseScore;  
 
     function endGame() {
       clearInterval(gameInterval);
