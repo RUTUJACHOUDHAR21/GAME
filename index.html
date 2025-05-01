@@ -106,11 +106,9 @@
       box.style.display = 'block';
       moveBox();
 
-      box.onclick = () => {
-        score++;
-        scoreDisplay.textContent = `Score: ${score}`;
-        moveBox();
-      };
+      // Add event listeners for both click (mouse) and touch
+      box.onclick = increaseScore;
+      box.ontouchstart = increaseScore;
 
       moveInterval = setInterval(moveBox, 1000);
       gameInterval = setInterval(() => {
@@ -118,6 +116,12 @@
         timerDisplay.textContent = `Time Left: ${timeLeft}s`;
         if (timeLeft <= 0) endGame();
       }, 1000);
+    }
+
+    function increaseScore() {
+      score++;
+      scoreDisplay.textContent = `Score: ${score}`;
+      moveBox();
     }
 
     function endGame() {
